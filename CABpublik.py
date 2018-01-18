@@ -38,6 +38,7 @@ helpMessage ="""
 ╚══════════════════════
 ╔══════════════════════
 ║[►] /me
+║[►] /myid
 ║[►] /say (txt)
 ║[►] /apakah (text)
 ║[►] /kapan (txt)
@@ -115,10 +116,15 @@ AdminMessage ="""
 ║[►] vĸ [naмe]
 ║[►] nυĸe
 ║[►] glιѕт
+║[►] Admin add @
+║[►] Admin remove @
+║[►] Owner add @
+║[►] Owner remove @
+║[►] Adminlist
+║[►] Ownerlist
 ║[►] reѕтarт
 ║[►] cn [тeхт]
 ║[►] cѕ [тeхт]
-║[►] мe
 ║[►] craѕн
 ║[►] ѕeт
 ║[►] aυтolιĸe on/oғғ
@@ -131,13 +137,6 @@ AdminMessage ="""
 ║[►] gιғт 1
 ║[►] gιғт 2
 ║[►] gιғт 3
-║[►] geтnaмe @
-║[►] geтвιo @
-║[►] geтιnғo @
-║[►] geтpp @
-║[►] geтcover @
-║[►] geтмιd @
-║[►] geтgroυp
 ║[►] ѕeтιмage [lιnĸ]
 ║[►] papιмage
 ║[►] ѕeтvιdeo [lιnĸ]
@@ -1056,9 +1055,11 @@ def bot(op):
 						cl.sendText(msg.to,helpt)
 #--------------------------------------------------
             elif msg.text in ["Admin menu"]:
+				if msg.from_ in admin or owner:
 					if wait["lang"] == "JP":
 						cl.sendText(msg.to,AdminMessage)
 					else:
+						cl.sendText(msg.to,"Khusus Admin")
 						cl.sendText(msg.to,helpt)
 #--------------------------------------------------
             elif ("/gn " in msg.text):
