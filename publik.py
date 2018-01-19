@@ -18,46 +18,70 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 helpMessage ="""
-╔═════════════
-║    ✰ tɛǟʍ ċʏɮɛʀ-ǟʀʍʏ ɮօt ✰
-╠═════════════
-║      Owner : Kris
-║ line://ti/p/~krissthea
-╠═════════════
-║╔════════════
-║╠❂➣Apakah (kerang ajaib)
-║╠❂➣kedapkedip = coba aja
-║╠❂➣Dosa @(by tag) 
-║╠❂➣Pahala @(by tag) 
-║╠❂➣Steal dp @(by tag)
-║╠❂➣Steal home @(by tag)
-║╠❂➣aa say = teks ke suara
-║╠❂➣aa cctv 
-║╠❂➣aa intip 
-║╠❂➣aa tagall 
-║╠❂➣trid = translate ing > ind
-║╠❂➣tren= translate ind > ing
-║╠❂➣aa gcreator 
-║╠❂➣aa ginfo = Info grup
-║╠❂➣aa cancel = Mmbtalkn undangan
-║╠❂➣aa ourl = Invite by link on
-║╠❂➣aa curl = Invite by link off
-║╠❂➣aa help = Menampilkan keyword
-║╠❂➣aa keluar = Bot keluar room
-║╠❂➣aa musik <penyanyi> <judul>
-║╚════════════
-╠═════════════
-║Suport By:>>>>> kris <<<<<<
-╚═════════════
+╔═══════════════════
+║♅ List Keyword! ♅
+╠═══════════════════
+║★★★★★★★★★★★★
+╠═══════════════════
+║[►] /me
+║[►] /myid
+║[►] /apakah
+║[►] /kedapkedip
+║[►] /dosa @ 
+║[►] /pahala @
+║[►] /Steal dp @
+║[►] /Steal home @
+║[►] /say 
+║[►] /cctv 
+║[►] /intip 
+║[►] /tagall 
+║[►] /trid
+║[►] /tren
+║[►] /gcreator 
+║[►] /ginfo
+║[►] /cancel
+║[►] /ourl
+║[►] /curl
+║[►] /help
+║[►] /Keluar
+║[►] /musik
+╠═══════════════════
+║♅ SkyLine Team ♅
+║Nb Use [\]
+║Untuk Bisa Pakai
+║Command Bots
+║♅ Command Private ♅
+║♅ Admin menu ♅
+╠═══════════════════
+║★★★★★★★★★★★★
+╚═══════════════════
 """
 
+AdminMessage ="""
+╔═══════════════════
+║♅ List Keyword! ♅
+╠═══════════════════
+║★★★★★★★★★★★★
+╠═══════════════════
+║[►] /rename
+║[►] /glist
+║[►] /grid
+║[►] /kick on
+║[►] /cancl on
+║[►] /gr on
+╠═══════════════════
+║♅ SkyLine Team ♅
+╠═══════════════════
+║★★★★★★★★★★★★
+╚═══════════════════
+"""
 
 KAC=[kr]
 DEF=[kr]
 mid = kr.getProfile().mid
 
 Bots=[mid]
-admin=["u31ef22df7f538df1d74dc7f756ef1a32","u9cc2323f5b84f9df880c33aa9f9e3ae1"]
+admin=["MID_KAMU"]
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -67,7 +91,7 @@ wait = {
     'autoAdd':True,
     'message':"",
     "lang":"JP",
-    "comment":"Thanks for add ",
+    "comment":"Akun Official Team line.me/ti/p/~@enr7503k ",
     "commentOn":False,
     "commentBlack":{},
     "wblack":False,
@@ -78,6 +102,8 @@ wait = {
     "wblacklist":False,
     "dblacklist":False,
     "atjointicket":True,
+    "Protectjoin":True,
+    "Protectgr":True,
     "Protectcancl":False,
     }
 
@@ -122,7 +148,7 @@ def autolike():
         if hasil['result']['posts'][zx]['postInfo']['liked'] == False:
           try:    
             kr.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-            kr.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"AutoLike by kris\n\nCAB => Cyber Army Bot")
+            kr.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Autolike By SkyLine Team Bots\nline.me/ti/p/~@enr7503k")
             print "Like"
           except:
             pass
@@ -330,6 +356,7 @@ def bot(op):
                             kr.rejectGroupInvitation(op.param1)
                         else:
                             kr.acceptGroupInvitation(op.param1)
+                            kr.sendText(msg.to, "Thanks for inviting me to your group type / help to see bot command\n\nAkun Official line.me/ti/p/~@enr7503k")
                     else:
                         kr.acceptGroupInvitation(op.param1)
                 elif wait["autoCancel"]["on"] == True:
@@ -460,7 +487,13 @@ def bot(op):
                     kr.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text in ["aa help"]:
+            elif msg.text in ["/help"]:
+                if wait["lang"] == "JP":
+                    kr.sendText(msg.to,helpMessage)
+                else:
+                    kr.sendText(msg.to,helpMessage)
+            elif msg.text in ["/admin menu"]:
+              if msg.from_ in admin:
                 if wait["lang"] == "JP":
                     kr.sendText(msg.to,helpMessage)
                 else:
@@ -471,9 +504,9 @@ def bot(op):
 #                    kr.sendText(msg.to,Setgroup)
 #                else:
 #                    kr.sendText(msg.to,Setgroup)
-            elif ("aa gn " in msg.text):
+            elif ("/gn " in msg.text):
                     X = kr.getGroup(msg.to)
-                    X.name = msg.text.replace("Gn ","")
+                    X.name = msg.text.replace("/gn ","")
                     kr.updateGroup(X)
             elif "Kick " in msg.text:
               if msg.from_ in admin:
@@ -489,7 +522,7 @@ def bot(op):
                 midd = msg.text.replace("sinvite ","")
                 kr.findAndAddContactsByMid(midd)
                 kr.inviteIntoGroup(msg.to,[midd])
-            elif msg.text in ["aa bot"]:
+            elif msg.text in ["/bot"]:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': mid}
                 kr.sendMessage(msg)
@@ -498,7 +531,7 @@ def bot(op):
                 msg.contentMetadata = {'mid': mid}
                 kr.sendMessage(msg)
 
-            elif msg.text in ["Me"]:
+            elif msg.text in ["/me"]:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': msg.from_}
                 random.choice(KAC).sendMessage(msg)
@@ -538,7 +571,7 @@ def bot(op):
                 msg.text = None
                 kr.sendMessage(msg)
                 kr.sendMessage(msg)
-            elif msg.text in ["aa cancel"]:
+            elif msg.text in ["/cancel"]:
                 if msg.toType == 2:
                     X = kr.getGroup(msg.to)
                     if X.invitee is not None:
@@ -557,7 +590,7 @@ def bot(op):
             #elif "gurl" == msg.text:
                 #print kr.getGroup(msg.to)
                 ##kr.sendMessage(msg)
-            elif msg.text in ["aa ourl"]:
+            elif msg.text in ["/ourl"]:
                     X = kr.getGroup(msg.to)
                     X.preventJoinByTicket = False
                     kr.updateGroup(X)
@@ -565,7 +598,7 @@ def bot(op):
                         kr.sendText(msg.to,"Invite by link open")
                     else:
                         kr.sendText(msg.to,"Already open")
-            elif msg.text in ["Aa ourl","aa link on"]:
+            elif msg.text in ["/ourl","/link on"]:
                 if msg.toType == 2:
                     X = kr.getGroup(msg.to)
                     X.preventJoinByTicket = False
@@ -579,7 +612,7 @@ def bot(op):
                         kr.sendText(msg.to,"Can not be used outside the group")
                     else:
                         kr.sendText(msg.to,"Not for use less than group")
-            elif msg.text in ["aa curl"]:
+            elif msg.text in ["/curl"]:
                     X = kr.getGroup(msg.to)
                     X.preventJoinByTicket = True
                     kr.updateGroup(X)
@@ -587,7 +620,7 @@ def bot(op):
                         kr.sendText(msg.to,"Invite by link Close")
                     else:
                         kr.sendText(msg.to,"Already close")
-            elif msg.text in ["Aa curl","aa link off"]:
+            elif msg.text in ["/curl","/link off"]:
                 if msg.toType == 2:
                     X = kr.getGroup(msg.to)
                     X.preventJoinByTicket = True
@@ -620,7 +653,7 @@ def bot(op):
                         group=kr.findGroupByTicket(ticket_id)
                         kr.acceptGroupInvitationByTicket(group.mid,ticket_id)
                         kr.sendText(msg.to,"Sukses join ke grup %s" % str(group.name))
-            elif msg.text == "aa ginfo":
+            elif msg.text == "/ginfo":
                 if msg.toType == 2:
                     ginfo = kr.getGroup(msg.to)
                     try:
@@ -644,9 +677,9 @@ def bot(op):
                         kr.sendText(msg.to,"Can not be used outside the group")
                     else:
                         kr.sendText(msg.to,"Not for use less than group")
-            elif "idgrup" == msg.text:
+            elif "/idgrup" == msg.text:
                 kr.sendText(msg.to,msg.to)
-            elif "my mid" == msg.text:
+            elif "/mymid" == msg.text:
                 random.choice(KAC).sendText(msg.to, msg.from_)
             elif "mid bot" == msg.text:
                 kr.sendText(msg.to,mid)
@@ -743,21 +776,21 @@ def bot(op):
                 tl_text = msg.text.replace("TL: ","")
                 kr.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+kr.new_post(tl_text)["result"]["post"]["postInfo"]["postId"]) 
 
-            elif "aa rename " in msg.text:
+            elif "/rename " in msg.text:
               if msg.from_ in admin:
-                string = msg.text.replace("aa rename ","")
+                string = msg.text.replace("/rename ","")
                 if len(string.decode('utf-8')) <= 20:
                     profile = kr.getProfile()
                     profile.displayName = string
                     kr.updateProfile(profile)
                     kr.sendText(msg.to,"Update Names >" + string + "<")
 
-            elif msg.text in ["Mc "]:
-                mmid = msg.text.replace("Mc ","")
+            elif msg.text in ["/mc "]:
+                mmid = msg.text.replace("/mc ","")
                 msg.contentType = 13
                 msg.contentMetadata = {"mid":mmid}
                 kr.sendMessage(msg)
-            elif msg.text in ["Joinn on","joinn on"]:
+            elif msg.text in ["/Kick on","/kick on"]:
               if msg.from_ in admin:
                 if wait["Protectjoin"] == True:
                     if wait["lang"] == "JP":
@@ -770,7 +803,7 @@ def bot(op):
                         kr.sendText(msg.to,"kick Joined Group On")
                     else:
                         kr.sendText(msg.to,"done")
-            elif msg.text in ["Joinn off","joinn off"]:
+            elif msg.text in ["/Kick off","/kick off"]:
               if msg.from_ in admin:
                 if wait["Protectjoin"] == False:
                     if wait["lang"] == "JP":
@@ -783,7 +816,7 @@ def bot(op):
                         kr.sendText(msg.to,"kick Joined Group Off")
                     else:
                         kr.sendText(msg.to,"done")
-            elif msg.text in ["Cancl on","cancl on"]:
+            elif msg.text in ["/Cancl on","/cancl on"]:
               if msg.from_ in admin:
                 if wait["Protectcancl"] == True:
                     if wait["lang"] == "JP":
@@ -796,7 +829,7 @@ def bot(op):
                         kr.sendText(msg.to,"Cancel All Invited On")
                     else:
                         kr.sendText(msg.to,"done")
-            elif msg.text in ["Cancl off","cancl off"]:
+            elif msg.text in ["/Cancl off","/cancl off"]:
               if msg.from_ in admin:
                 if wait["Protectcancl"] == False:
                     if wait["lang"] == "JP":
@@ -809,7 +842,7 @@ def bot(op):
                         kr.sendText(msg.to,"Cancel All Invited Off")
                     else:
                         kr.sendText(msg.to,"done")
-            elif msg.text in ["Gr on","gr on"]:
+            elif msg.text in ["/Gr on","/gr on"]:
               if msg.from_ in admin:
                 if wait["Protectgr"] == True:
                     if wait["lang"] == "JP":
@@ -822,7 +855,7 @@ def bot(op):
                         kr.sendText(msg.to,"Protect Group On")
                     else:
                         kr.sendText(msg.to,"done")
-            elif msg.text in ["Gr off","gr off"]:
+            elif msg.text in ["/Gr off","/gr off"]:
               if msg.from_ in admin:
                 if wait["Protectgr"] == False:
                     if wait["lang"] == "JP":
@@ -1026,7 +1059,7 @@ def bot(op):
                     kr.sendText(msg.to,str(i) + "Deleted albums")
                 else:
                     kr.sendText(msg.to,str(i) + "åˆ é™¤äº†äº‹çš„ç›¸å†Œã€‚")
-            elif msg.text in ["Group id"]:
+            elif msg.text in ["/grid"]:
                 gid = kr.getGroupIdsJoined()
                 h = ""
                 for i in gid:
@@ -1130,7 +1163,7 @@ def bot(op):
                         kr.sendText(msg.to,"è¦�äº†å…³æ–­ã€‚")
             elif msg.text in ["Comment","ç•™è¨€ç¢ºèª�"]:
                 kr.sendText(msg.to,"message changed to\n\n" + str(wait["comment"]))
-            elif msg.text in ["Gurl"]:
+            elif msg.text in ["/getqr"]:
                 if msg.toType == 2:
                     x = kr.getGroup(msg.to)
                     if x.preventJoinByTicket == True:
@@ -1143,7 +1176,7 @@ def bot(op):
                         kr.sendText(msg.to,"Can't be used outside the group")
                     else:
                         kr.sendText(msg.to,"Not for use less than group")
-            elif msg.text in ["aa gurl"]:
+            elif msg.text in ["/gurl"]:
                 if msg.toType == 2:
                     x = kr.getGroup(msg.to)
                     if x.preventJoinByTicket == True:
@@ -1204,8 +1237,8 @@ def bot(op):
 
 #--------------------#
 
-            elif "aa lirik " in msg.text.lower():
-                songname = msg.text.replace("aa lirik ","")
+            elif "/lirik " in msg.text.lower():
+                songname = msg.text.replace("/lirik ","")
                 params = {"songname":songname}
                 r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/' + urllib.urlencode(params))
                 data = r.text
@@ -1216,7 +1249,7 @@ def bot(op):
                     print "[Command] Lirik"
 
 
-            elif msg.text in ["aa gcreator"]:
+            elif msg.text in ["/gcreator"]:
                 if msg.toType == 2:
                     msg.contentType = 13
                     ginfo = kr.getGroup(msg.to)
@@ -1234,7 +1267,7 @@ def bot(op):
                 kr.kedapkedip(msg.to,txt)
 
 #--------------ListGroup------------------#
-            elif msg.text in ["List grup"]:
+            elif msg.text in ["/glist"]:
               if msg.from_ in admin:
                 gid = kr.getGroupIdsJoined()
                 h = ""
@@ -1264,9 +1297,9 @@ def bot(op):
 
 #-------------------#
 
-            elif "Steal dp @" in msg.text:
+            elif "/steal dp @" in msg.text:
                 print "[Command]dp executing"
-                _name = msg.text.replace("Steal dp @","")
+                _name = msg.text.replace("/steal dp @","")
                 _nametarget = _name.rstrip(' ')
                 gs = kr.getGroup(msg.to)
                 targets = []
@@ -1286,9 +1319,9 @@ def bot(op):
                 print "[Command]dp executed"
 
 
-            elif "Steal home @" in msg.text:
+            elif "/steal home @" in msg.text:
                 print "[Command]dp executing"
-                _name = msg.text.replace("Steal home @","")
+                _name = msg.text.replace("/steal home @","")
                 _nametarget = _name.rstrip(' ')
                 gs = kr.getGroup(msg.to)
                 targets = []
@@ -1309,17 +1342,17 @@ def bot(op):
                 print "[Command]dp executed"
 
 #-----------------------------------------------
-            elif "aa say " in msg.text:
-                 psn = msg.text.replace("aa say ","")
+            elif "/say " in msg.text:
+                 psn = msg.text.replace("/say ","")
                  tts = gTTS(psn, lang='id', slow=False)
                  tts.save('tts.mp3')
                  kr.sendAudio(msg.to, 'tts.mp3')
 
 #-----------------------------------------------
 
-            elif 'aa musik ' in msg.text.lower():
+            elif '/musik ' in msg.text.lower():
                 try:
-                    songname = msg.text.lower().replace('aa musik ','')
+                    songname = msg.text.lower().replace('/musik ','')
                     params = {'songname': songname}
                     r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
                     data = r.text
@@ -1335,9 +1368,9 @@ def bot(op):
                 except Exception as njer:
                         kr.sendText(msg.to, str(njer))
 
-            elif 'lirik ' in msg.text.lower():
+            elif '/lirik ' in msg.text.lower():
                 try:
-                    songname = msg.text.lower().replace('lirik ','')
+                    songname = msg.text.lower().replace('/lirik ','')
                     params = {'songname': songname}
                     r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(param))
                     data = r.text
@@ -1348,7 +1381,7 @@ def bot(op):
                 except Exception as njer:
                         kr.sendText(msg.to, str(njer))
 
-            elif "Gbc " in msg.text:
+            elif "/Gbc " in msg.text:
                 if msg.from_ in admin:
                     bctxt = msg.text.replace("Gbc ", "")
                     n = kr.getGroupIdsJoined()
@@ -1363,8 +1396,8 @@ def bot(op):
                         kr.sendText(manusia, (bctxt))
 
 #--------------------------------- TRANSLATE --------------------------------
-            elif "tren" in msg.text:
-                txt = msg.text.replace("tren","")
+            elif "/tren " in msg.text:
+                txt = msg.text.replace("/tren ","")
                 try:
                     gs = goslate.Goslate()
                     trs = gs.translate(txt,'en')
@@ -1373,8 +1406,8 @@ def bot(op):
                 except:
                     kr.sendText(msg.to,'Error.')
 
-            elif "trid " in msg.text:
-                txt = msg.text.replace("trid ","")
+            elif "/trid " in msg.text:
+                txt = msg.text.replace("/trid ","")
                 try:
                     gs = goslate.Goslate()
                     trs = gs.translate(txt,'id')
@@ -1384,8 +1417,8 @@ def bot(op):
                     kr.sendText(msg.to,'Error.')
 
 	#-----------KERANG---------#
-            elif "Apakah " in msg.text:
-                tanya = msg.text.replace("Apakah ","")
+            elif "/apakah " in msg.text:
+                tanya = msg.text.replace("/apakah ","")
                 jawab = ("Iya","Tidak")
                 jawaban = random.choice(jawab)
                 tts = gTTS(text=jawaban, lang='id')
@@ -1393,21 +1426,21 @@ def bot(op):
                 kr.sendAudio(msg.to,'tts.mp3')
 
 #----------------------
-            elif "Dosa @" in msg.text:
-                tanya = msg.text.replace("Dosa @","")
+            elif "/dosa @" in msg.text:
+                tanya = msg.text.replace("/dosa @","")
                 jawab = ("60%","70%","80%","90%","100%","Tak terhingga")
                 jawaban = random.choice(jawab)
                 kr.sendText(msg.to,"Dosanya " + tanya + "adalah " + jawaban + " Banyak banyak tobat Nak ")
 #----------------------
-            elif "Pahala @" in msg.text:
-                tanya = msg.text.replace("Pahala @","")
+            elif "/pahala @" in msg.text:
+                tanya = msg.text.replace("/pahala @","")
                 jawab = ("0%","20%","40%","50%","60%","Tak ada")
                 jawaban = random.choice(jawab)
                 kr.sendText(msg.to,"Pahalanya " + tanya + "adalah " + jawaban + "\nTobatlah nak")
 
 	#-------------------------------#
 
-            elif "Steal group" in msg.text:
+            elif "/steal group" in msg.text:
                    group = kr.getGroup(msg.to)
                    path =("http://dl.profile.line-cdn.net/" + group.pictureStatus)
                    kr.sendImageWithURL(msg.to, path)
@@ -1425,7 +1458,7 @@ def bot(op):
                 else:
                     kr.sendText(msg.to,"Aktifkan jam terlebih dulu")
          #-------------Fungsi Jam Update Finish-------------------#
-            elif msg.text in ["aa cctv"]:
+            elif msg.text in ["/cctv"]:
                 if msg.toType == 2:
                     kr.sendText(msg.to, "Set reading point\nSilahkan ketik 「aa intip」")
                     try:
@@ -1439,7 +1472,7 @@ def bot(op):
                         wait2['ROM'][msg.to] = {}
                         print "Lurkset"
 
-            elif msg.text in ["aa intip"]:
+            elif msg.text in ["/intip"]:
                 if msg.toType == 2:
                     print "\nSider check aktif..."
                     if msg.to in wait2['readPoint']:
@@ -1467,7 +1500,7 @@ def bot(op):
                                     kr.sendText(msg.to, "Ketik 「aa cctv」 dulu kaka...\nHehe")
 
          #----------------Fungsi Join Group Start-----------------------#
-            elif msg.text in ["aa masuk"]:
+            elif msg.text in ["/masuk"]:
                 if msg.from_ in admin:
                     G = kr.getGroup(msg.to)
                     ginfo = kr.getGroup(msg.to)
@@ -1488,17 +1521,18 @@ def bot(op):
 
     #-------------Fungsi Leave Group Start---------------#
 
-            elif msg.text in ["aa keluar"]:
+            elif msg.text in ["/keluar"]:
                 if msg.toType == 2:
                     ginfo = kr.getGroup(msg.to)
                     try:
                         kr.leaveGroup(msg.to)
+                        kr.sendText(msg.to, "「Bye Bye」\n\nAkun Official Bots line.me/ti/p/~@enr7503k")
                     except:
                         pass
     #-------------Fungsi Leave Group Finish---------------#
 
     #-------------Fungsi Tag All Start---------------#
-            elif msg.text in ["aa tagall"]:
+            elif msg.text in ["/tagall"]:
                 group = kr.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
 
@@ -1554,9 +1588,9 @@ def bot(op):
                         print "ok"
                         _name = msg.text.replace("Cleanse","")
                         gs = kr.getGroup(msg.to)
-                        kr.sendText(msg.to,"maaf kalo gak sopan")
-                        kr.sendText(msg.to,"makasih semuanya..")
-                        kr.sendText(msg.to,"hehehhehe")
+                        kr.sendText(msg.to,"「Prosses To Clean Group」")
+                        kr.sendText(msg.to,"「Please wait....」")
+                        kr.sendText(msg.to,"「Play To Kicker Only」")
                         msg.contentType = 13
                         msg.contentMetadata = {'mid': mid}
                         kr.sendMessage(msg)
@@ -1575,7 +1609,7 @@ def bot(op):
                                     kicker.kickoutFromGroup(msg.to,[target])
                                     print (msg.to,[g.mid])
                                 except:
-                                    kr.sendText(msg.to,"Group cleanse")
+                                    kr.sendText(msg.to,"「Group Have Been Cleanse」")
 
         #----------------Fungsi Kick User Target Start----------------------#
             elif "Nk " in msg.text:
@@ -1620,7 +1654,7 @@ def bot(op):
                                     wait["blacklist"][target] = True
                                     f=codecs.open('st2__b.json','w','utf-8')
                                     json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                    kr.sendText(msg.to,"Succes ")
+                                    kr.sendText(msg.to,"「Prosses To Blacklist」\n「Please wait...」\n「Sukses To Blacklist」")
                                 except:
                                     kr.sendText(msg.to,"error")
             
@@ -1751,36 +1785,16 @@ def bot(op):
 
             elif msg.text in ["creator"]:
                 msg.contentType = 13
-                msg.contentMetadata = {'mid': "u31ef22df7f538df1d74dc7f756ef1a32"}
+                msg.contentMetadata = {'mid': "uc77fd25b59f6e563d84f1334f3fed10b"}
+                kr.sendText(msg.to"「My Creator Bots」"
                 kr.sendMessage(msg)
-            elif msg.text in ["bobo ah","Bobo dulu ah"]:
-                kr.sendText(msg.to,"Have a nice dream  􀜁􀅔Har Har􏿿")
-                kr.sendText(msg.to,"Have a nice dream  􀜁􀅔Har Har􏿿")
-                kr.sendText(msg.to,"Have a nice dream  􀜁􀅔Har Har􏿿")
-
-            elif msg.text in ["welcome"]:
-                kr.sendText(msg.to,"Selamat datang")
-                kr.sendText(msg.to,"Jangan nakal ok!")
-#-----------------------------------------------
-            elif msg.text in ["PING","Ping","ping"]:
-                kr.sendText(msg.to,"PONG 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-                kr.sendText(msg.to,"PONG 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-                kr.sendText(msg.to,"PONG 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-#-----------------------------------------------
-
-       #-------------Fungsi Respon Start---------------------#
-            elif msg.text in ["aa","Aa","AA"]:
-                kr.sendText(msg.to,"Test")
-                kr.sendText(msg.to,"Test")
-                kr.sendText(msg.to,"Satu tetes")
-                kr.sendText(msg.to,"Nah Hati-hati")
-                kr.sendText(msg.to,"Hahahaha")
-      #-------------Fungsi Respon Finish---------------------#
+            elif msg.text in ["/version"]:
+                kr.sendText(msg.to,"「Bot Version V2」")
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["sp","speed","Speed","Sp"]:
+            elif msg.text in ["/sp","/speed","/Speed","/Sp"]:
                 start = time.time()
-                kr.sendText(msg.to, "Tunggu...")
+                kr.sendText(msg.to, "「Prosses To Speed」\n「Please wait...」\n「Sukses To Speed」")
                 elapsed_time = time.time() - start
                 kr.sendText(msg.to, "%sseconds" % (elapsed_time))
       #-------------Fungsi Speedbot Finish---------------------#
